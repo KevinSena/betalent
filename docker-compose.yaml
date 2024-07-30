@@ -35,6 +35,7 @@ services:
       TZ: UTC
       LOG_LEVEL: info
       APP_KEY: dje93LCUQdRWl3s8JCh46-KlQgT0ymxw
+      HOST: 0.0.0.0
 
 volumes:
   mysql-data:
