@@ -13,6 +13,10 @@ export default class HttpExceptionHandler extends ExceptionHandler {
    * response to the client
    */
   async handle(error: unknown, ctx: HttpContext) {
+    if (error instanceof Error && error.message.includes('Duplicate entry')) {
+      ctx.response.status(409).send('Email Already Exists')
+      return
+    }
     return super.handle(error, ctx)
   }
 
