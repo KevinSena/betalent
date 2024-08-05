@@ -9,10 +9,10 @@ export default class extends BaseSchema {
       table.string('name').notNullable()
       table.integer('price').notNullable().unsigned()
       table.string('description').notNullable()
-      table.timestamp('manufacturing_date').notNullable()
-      table.timestamp('expiration_date').nullable()
-      table.timestamp('deleted_at').nullable().defaultTo(null)
+      table.date('manufacturing_date').notNullable()
+      table.date('expiration_date').nullable()
 
+      table.timestamp('deleted_at').nullable().defaultTo(null)
       table.timestamp('created_at')
       table.timestamp('updated_at')
     })
