@@ -23,7 +23,10 @@ export default class Product extends BaseModel{
   declare manufacturingDate: DateTime;
 
   @column()
-  declare expirationDate: DateTime | null;
+  declare expirationDate?: DateTime;
+
+  @column.dateTime({ serializeAs: null })
+  declare deletedAt?: DateTime;
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
