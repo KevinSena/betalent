@@ -13,7 +13,11 @@ export default class HttpExceptionHandler extends ExceptionHandler {
    * response to the client
    */
   async handle(error: unknown, ctx: HttpContext) {
-    if (error instanceof Error && error.message.includes('Duplicate entry')) {
+    // TODO: User vine message provider
+    if (error instanceof Error && error.message.includes('Duplicate entry') && error.message.includes('for key \'clients.clients_cpf_unique\'')) {
+      ctx.response.status(409).send('CPF Already Exists')
+      return
+    } else if (error instanceof Error && error.message.includes('Duplicate entry')) {
       ctx.response.status(409).send('Email Already Exists')
       return
     }
