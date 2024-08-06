@@ -22,6 +22,7 @@ router.group(() => {
   router.get('/', [ClientsController, 'index'])
   router.put('/:id', [ClientsController, 'update']).where('id', router.matchers.number())
   router.get('/:id', [ClientsController, 'show']).where('id', router.matchers.number())
+  router.delete(':id', [ClientsController, 'delete']).where('id', router.matchers.number())
 })
   .prefix('/client')
   .use(middleware.auth({ guards: ['api']} ))

@@ -67,4 +67,12 @@ export default class ClientsController {
 
     return client
   }
+
+  async delete({params}: HttpContext): Promise<void> {
+    const id: number = params.id;
+    await Client
+      .query()
+      .where('id', id)
+      .delete()
+  }
 }
