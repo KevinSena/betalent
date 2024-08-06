@@ -30,7 +30,7 @@ export default class Sale extends BaseModel{
   declare totalPrice: number;
 
   @column()
-  declare dateTime: DateTime;
+  declare dateTime: Date;
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime

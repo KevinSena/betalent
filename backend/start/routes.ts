@@ -12,6 +12,7 @@ import UsersController from "#controllers/users_controller";
 import ClientsController from "#controllers/clients_controller";
 import {middleware} from "#start/kernel";
 import ProductsController from "#controllers/products_controller";
+import SalesController from "#controllers/sales_controller";
 
 router.post('/signup', [UsersController, 'signup'])
 router.post('/login', [UsersController, 'login'])
@@ -32,3 +33,5 @@ router.group(() => {
 })
   .prefix('product')
   .use(middleware.auth({ guards: ['api']} ))
+
+router.post('/sale', [SalesController, 'store']).use(middleware.auth({ guards: ['api'] }))
