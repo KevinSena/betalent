@@ -13,9 +13,17 @@ export default class ProductsController{
     return Product
       .query()
       .from('products')
-      .select('*')
+      .select('id', 'name', 'price', 'description', 'manufacturing_date', 'expiration_date')
       .whereNull('deleted_at')
       .orderBy('name', 'asc')
+  }
+
+  async show({ params }: HttpContext): Promise<Product> {
+    const id: number = params.id;
+    return Product
+      .query()
+      .where('id', id)
+      .preload('sales')
   }
 
   async update({params, request}: HttpContext): Promise<Product> {

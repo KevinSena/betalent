@@ -30,6 +30,7 @@ router.group(() => {
 router.group(() => {
   router.post('/', [ProductsController, 'store'])
   router.get('/', [ProductsController, 'index'])
+  router.get('/:id', [ProductsController, 'show']).where('id', router.matchers.number())
   router.put('/:id', [ProductsController, 'update']).where('id', router.matchers.number())
   router.delete('/:id', [ProductsController, 'delete']).where('id', router.matchers.number())
 })
