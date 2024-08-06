@@ -24,6 +24,7 @@ export default class ProductsController{
       .query()
       .where('id', id)
       .preload('sales')
+      .firstOrFail()
   }
 
   async update({params, request}: HttpContext): Promise<Product> {
